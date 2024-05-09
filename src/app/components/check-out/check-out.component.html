@@ -1,0 +1,36 @@
+
+<div class="container">
+  <form action="" [formGroup]="formData" (ngSubmit)="sendForm()">
+    <label for="details" class="form-label">details</label>
+    <textarea formControlName="details" name="" class="form-control" id="details" cols="30" rows="10" ></textarea>
+
+
+    <div  *ngIf="formData.get('details')?.errors && formData.get('details')?.touched ">
+      <!-- <p *ngIf="formData.get('details')?.getError('pattern')">details 010-011-012-015 (0-9)</p> -->
+      <p *ngIf="formData.get('details')?.getError('required')">details is Required</p>
+    </div>
+
+
+    <label for="phone" class="form-label">phone</label>
+    <input formControlName="phone" type="tel" class="form-control" id="phone">
+    <div  *ngIf="formData.get('phone')?.errors && formData.get('phone')?.touched ">
+      <p *ngIf="formData.get('phone')?.getError('pattern')">phone 010-011-012-015 (0-9)</p>
+      <p *ngIf="formData.get('phone')?.getError('required')">phone is Required</p>
+    </div>
+
+    <label for="city" class="form-label">city</label>
+    <input formControlName="city" type="text" class="form-control" id="city">
+    <div  *ngIf="formData.get('city')?.errors && formData.get('city')?.touched ">
+      <!-- <p *ngIf="formData.get('city')?.getError('pattern')">city 010-011-012-015 (0-9)</p> -->
+      <p *ngIf="formData.get('city')?.getError('required')">city is Required</p>
+    </div>
+<!-- <div class="but "> -->
+  <button class="ms-auto mt-4 d-block btn btn-outline-success " [disabled]="formData.invalid" >
+    <span *ngIf="!isvalid">check Out</span>
+    <span *ngIf="valid"><i class="fas fa-spin fa-spinner"></i></span>
+  </button>
+  <!-- <button class="ms-auto mt-4 d-block btn btn-outline-success " [disabled]="formData.invalid">check Out</button> -->
+
+<!-- </div> -->
+  </form>
+</div>

@@ -1,0 +1,70 @@
+<section class="position-relative">
+  <div class="container">
+    <!-- <div class="container" *ngIf="!show">
+      <div class=" d-flex flex-row justify-content-between align-items-center ">
+        <p class="h2">Total : <span class="text-success">{{Data.totalCartPrice}}</span></p>
+       <button class="btn btn-primary"  [routerLink]="['/checkOut' , Data._id ]">checkOut</button>
+      </div>
+    </div> -->
+    <div class="row  bg-body-tertiary gy-4 my-4" *ngFor="let item of Data , index as i">
+
+        <!-- <div class="content d-flex flex-row justify-content-between align-items-center">
+          <div class="left d-flex flex-row  align-items-center  ">
+            <img [src]="data.product.imageCover" alt="" width="10%" class="me-3">
+            <div class="details d-flex flex-column  ">
+              <p>{{data.product.title}}</p>
+              <p>price for item : {{data.price | currency:" "}} EGP</p>
+              <div class="remove d-flex flex-row">
+                <div class="ico me-1" (click)="remove(data.product._id)">
+                  <i class="fa-solid fa-trash"></i>
+                </div>
+                <p class="" (click)="remove(data.product._id)">Remove</p>
+              </div>
+            </div>
+          </div>
+          <div class="right text-center ">
+            <div class="maximum">
+              <p class="text-center text-danger" *ngIf="data.count == quantity[i]">Maximum Quantity {{quantity[i]}} item</p>
+            </div>
+            <i class="fa-solid fa-square-plus  d-block" (click)="plus(data.product._id ,i)"></i>
+            <input type="tel"  name="" id="" (blur)="quintatity(i , data.product._id , $event)" [value]="data.count" class=" my-2 w-50 text-center ">
+
+            <i class="fa-regular fa-square-minus d-block " (click)="minus(data.product._id , i  )"></i>
+            <div class="maximum">
+              <p *ngIf="data.count>1">Total Price for All Quantity : {{data.price*data.count| currency:" "}} EGP</p>
+
+            </div>
+
+          </div>
+        </div> -->
+
+     <div class="col-3 text-center">
+      <img [src]="item.imageCover" alt="" width="50%">
+      <!-- <p>nkn</p> -->
+     </div>
+     <div class="col-7">
+      <p class="h4">{{item.title}}</p>
+      <p>Price : {{item.price}}</p>
+      <button class="d-flex flex-row align-items-center justify-content-center btn btn-outline-danger" (click)="remove(item._id , i)">
+        <i class="fa-solid fa-trash"></i>
+        <p class="p-0 m-0">Remove</p>
+      </button>
+     </div>
+     <div class="col-2">
+      <button class="btn btn-outline-success" (click)="addtoCart(item._id)">
+        Add To Cart
+      </button>
+     </div>
+    </div>
+
+
+  </div>
+  <div *ngIf="show"  class="loadingScreen d-flex flex-row justify-content-center align-items-center position-absolute end-0 top-0 bottom-0 z-3 ">
+    <span  class="loader text-black d-block ">
+      <a class="navbar-brand text-center " >
+        <span class="d-block"> <i class="fas fa-cart-shopping fa-3x " style="color: green;"></i></span>
+         <Span class="h3">fresh cart</Span>
+       </a>
+    </span>
+  </div>
+</section>

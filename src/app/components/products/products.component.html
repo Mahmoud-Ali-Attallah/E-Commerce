@@ -1,0 +1,69 @@
+
+
+
+
+
+<section class="position-relative">
+
+<div class="container ">
+
+  <input *ngIf=" show == false" type="search" (input)="value($event)" placeholder="Real Time Search by Tittle . . . ." class="w-100 form-control "/>
+
+
+      <div *ngIf="(Data|search:searhValue).length == 0 && show == false" class="notfound d-flex flex-row justify-content-center align-items-center">
+        <p class="h1">Not Found</p>
+        </div>
+  <div class="row g-3 justify-content-between">
+
+    <div class="this col-sm-12 col-md-6 col-lg-4 col-xl-3   rounded rounded-2"  *ngFor="let data of Data |search:searhValue , index as i">
+      <div class="produc ">
+<div class="producbutt" >
+<div class="tooop" [routerLink]="['/details' , data.id]">
+  <img [src]="data.imageCover" [alt]="data.title" width="100%">
+  <h3 class="h6">{{data.category.name}}</h3>
+
+  <div class="foot d-flex flex-row justify-content-between">
+    <h4 class="h6">{{data.title | custemPipe:0:2}}</h4>
+    <div class="rate d-flex flex-row">
+      <span>{{data.ratingsAverage}}</span>
+      <span><i class="fa-solid fa-star"></i></span>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <div class="d-flex flex-row justify-content-between align-items-center mt-4">
+    <p class="p-0 m-0">{{data.price}} EGP</p>
+    <div class="right d-flex flex-row">
+      <div class="" (click)="Favorite(data.id , data.Add , i)" >
+        <i class="fa-solid fa-heart fa-2x text-danger " *ngIf="data.Add"></i>
+
+        <i class="fa-regular fa-heart fa-2x" *ngIf="!data.Add"></i>
+      </div>
+      <a class="position-relative"  >
+        <!-- <i class="fas fa-cart-shopping fa-2x text-danger " ></i> -->
+        <i class="fa-solid fa-cart-arrow-down fa-2x "*ngIf="!data.Buy" ></i>
+        <i class="fa-solid fa-cart-arrow-down fa-2x text-success"*ngIf="data.Buy" ></i>
+
+        <span class="badge bg-info position-absolute bottom-100 end-0 " *ngIf="data.count">{{data.count}}</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+        <button class="btn btn-primary w-100 my-2" (click)="addtoCart(data.id , i)">Add Product</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="show" class="loadingScreen d-flex flex-row justify-content-center align-items-center position-absolute  end-0 top-0 bottom-0 z-3 ">
+  <span  class="loader text-black d-block ">
+    <a class="navbar-brand text-center " >
+      <span class="d-block"> <i class="fas fa-cart-shopping fa-3x " style="color: green;"></i></span>
+       <Span class="h3">fresh cart</Span>
+     </a>
+  </span>
+</div>
+</section>

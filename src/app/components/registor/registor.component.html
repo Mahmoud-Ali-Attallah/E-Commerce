@@ -1,0 +1,58 @@
+<section class="w-75 mx-auto bg-secondary-subtle px-4 rounded rounded-4">
+  <h1 class="pt-4">Registor Now</h1>
+  <form class="position-relative pt-4 pb-4" action="" [formGroup]="formRegistor" (ngSubmit)="sendData()" >
+    <label class="mb-2" for="name">name</label>
+    <input #inputName class="form-control mb-3" id="name" type="text" formControlName="name">
+    <div class="inp1 bg-danger" *ngIf="formRegistor.get('name')?.errors && (formRegistor.get('name')?.touched || inputName.value.length > 0)  " >
+      <p class="text-bg-danger" *ngIf="formRegistor.get('name')?.getError('required') " >name is Required/p>
+      <p *ngIf="formRegistor.get('name')?.getError('pattern')">greter than 3 character & a-z A-Z</p>
+    </div>
+
+    <label class="mb-2" for="Email">Email</label>
+    <input class="form-control mb-3" id="Email" type="email" formControlName="email">
+    <div  *ngIf="formRegistor.get('email')?.errors && formRegistor.get('email')?.touched ">
+      <p *ngIf="formRegistor.get('email')?.getError('email')">Email is llnlnl</p>
+      <p *ngIf="formRegistor.get('email')?.getError('required')">Email is Required</p>
+    </div>
+
+
+    <label class="mb-2" for="phone">phone</label>
+    <input class="form-control mb-3" id="phone" type="tel" formControlName="phone">
+    <div  *ngIf="formRegistor.get('phone')?.errors && formRegistor.get('phone')?.touched ">
+      <p *ngIf="formRegistor.get('phone')?.getError('pattern')">Phone 010-011-012-015 (0-9)</p>
+      <p *ngIf="formRegistor.get('phone')?.getError('required')">phone is Required</p>
+    </div>
+
+    <label class="mb-2" for="password">password</label>
+    <input class="form-control mb-3" id="password" type="password" formControlName="password">
+    <div  *ngIf="formRegistor.get('password')?.errors && formRegistor.get('password')?.touched ">
+      <p *ngIf="formRegistor.get('password')?.getError('pattern')">password 010-011-012-015 (0-9)</p>
+      <p *ngIf="formRegistor.get('password')?.getError('required')">password is Required</p>
+    </div>
+
+
+    <label class="mb-2" for="rePassword">repassword</label>
+    <input class="form-control mb-3" id="rePassword" type="password" formControlName="rePassword">
+    <div  *ngIf="formRegistor.get('rePassword')?.errors && formRegistor.get('rePassword')?.touched ">
+      <p *ngIf="formRegistor.get('rePassword')?.getError('required')">Repassword is Required</p>
+      <p *ngIf="formRegistor.get('rePassword')?.getError('mistake')">Repassword is mistake</p>
+    </div>
+
+    <button class="ms-auto d-block btn btn-success" [disabled]="formRegistor.invalid" >
+      <span *ngIf="!isvalid">Registor</span>
+      <span *ngIf="valid"><i class="fas fa-spin fa-spinner"></i></span>
+    </button>
+
+  <div class="err d-flex flex-column justify-content-center align-items-center" *ngIf="Error" >
+    <i (click)="close()" class="ico fa-regular fa-circle-xmark fs-2 bg-white rounded-circle"></i>
+    <div class=" prag rounded rounded-4 massageErroe d-flex flex-row justify-content-center align-items-center mt-2">
+      <P>{{Error}}</P>
+      <button class="d-block btn btn-success" (click)="login()">Login</button>
+    </div>
+  </div>
+
+  </form>
+</section>
+
+
+

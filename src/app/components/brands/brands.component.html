@@ -1,0 +1,25 @@
+
+<section>
+  <div class="position-relative">
+    <div class="container ">
+      <div class="row g-3">
+        <div class="this col-sm-12 col-md-6 col-lg-4 col-xl-3  border border-dark-subtle rounded rounded-2" *ngFor="let item of Categ" [routerLink]="['/detailsBrands' , item.name]" >
+          <div class="data">
+            <img [src]="item.image" height="300px" width="100%" [title]="item.name">
+            <!-- <h3>{{item.name}}</h3> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="show" class="loadingScreen d-flex flex-row justify-content-center align-items-center position-absolute  end-0 top-0 bottom-0 z-3 ">
+      <span  class="loader text-black d-block ">
+        <a class="navbar-brand text-center " >
+          <span class="d-block"> <i class="fas fa-cart-shopping fa-3x " style="color: green;"></i></span>
+           <Span class="h3">fresh cart</Span>
+         </a>
+      </span>
+    </div>
+  </div>
+</section>
+
+

@@ -1,0 +1,42 @@
+<section class="d-flex flex-row justify-content-center align-items-center">
+  <div class="concc w-75 mx-auto bg-secondary-subtle px-4 rounded rounded-4">
+    <h1 class="pt-4">Registor Now</h1>
+    <form class="position-relative pt-4 pb-4" action="" [formGroup]="formLogin" (ngSubmit)="sendData()" >
+
+      <label class="mb-2" for="Email">Email</label>
+      <input #inputEmail class="form-control mb-3" id="Email" type="email" formControlName="email">
+      <div  *ngIf="formLogin.get('email')?.errors && (inputEmail.value.length>0 || formLogin.get('email')?.touched)">
+        <p *ngIf="formLogin.get('email')?.getError('email')">Email is ............</p>
+        <p *ngIf="formLogin.get('email')?.getError('required')">Email is Required</p>
+      </div>
+
+      <label class="mb-2" for="password">password</label>
+      <input class="form-control mb-3" id="password" type="password" formControlName="password">
+      <div  *ngIf="formLogin.get('password')?.errors && formLogin.get('password')?.touched ">
+        <p *ngIf="formLogin.get('password')?.getError('pattern')">password 010-011-012-015 (0-9)</p>
+        <p *ngIf="formLogin.get('password')?.getError('required')">password is Required</p>
+      </div>
+
+
+<div class="reg d-flex flex-row justify-content-between align-items-center">
+  <p [routerLink]="['/forget']">Forget Your Password ?</p>
+  <button class=" d-block btn btn-success" >
+    <span *ngIf="!isvalid">Registor</span>
+    <span *ngIf="valid"><i class="fas fa-spin fa-spinner"></i></span>
+  </button>
+</div>
+
+    <div class="err d-flex flex-column justify-content-center align-items-center" *ngIf="Error" >
+      <i (click)="close()" class="ico fa-regular fa-circle-xmark fs-2 bg-white rounded-circle"></i>
+      <div class=" prag rounded rounded-4 massageErroe d-flex flex-row justify-content-center align-items-center mt-2">
+        <P>{{Error}}</P>
+      </div>
+    </div>
+
+    </form>
+  </div>
+
+</section>
+
+
+

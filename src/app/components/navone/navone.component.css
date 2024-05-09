@@ -1,0 +1,73 @@
+/* a{
+  cursor: pointer !important;
+} */
+/* i{
+  cursor: pointer !important;
+
+} */
+/* .succses{
+  background-color: green ;
+  border: ;
+} */
+.navbar-brand{
+  width: 20%;
+}
+.navbar-nav{
+  width: 30%;
+}
+.change{
+  display: none !important;
+}
+@media screen and (max-width : 990px) {
+  /* .navbar{
+    height: 500px;
+    align-items:start !important;
+  } */
+  .this{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* background: #000; */
+  width: 100%;
+  }
+  .left  , .right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .center{
+  display: none !important;
+  }
+  .Setting{
+  display: none !important;
+
+  }
+  .change{
+    display: block !important;
+    height: 70px !important;
+  }
+  nav{
+    /* position: absolute !important; */
+    z-index: 9999999999!important;
+  }
+  .THIS2{
+    /* margin-inline:0% !important; */
+    /* margin-inline: 0% !important; */
+    text-align: center !important;
+  }
+  /* .nav{
+    position: relative !important;
+  }
+  .signout{
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    display: block !important;
+  } */
+  /* button{
+    position: absolute !important;
+    top: 20 !important;
+    right: 200px !important;
+  } */
+}

@@ -1,0 +1,74 @@
+section{
+  min-height: 100vh !important;
+}
+.loadingScreen{
+  height: 700px !important;
+  background-color: rgb(255, 255, 255 , 0.8);
+  width: 100% !important;
+  /* left: 52% !important; */
+  /* top: 0px !important; */
+
+}
+.this{
+  height: 350px ;
+  transition: 1s 0s box-shadow;
+}
+.this:hover{
+  box-shadow: 0px 0px 30px 0.2px green ;
+}
+
+.loader {
+
+  /* width: 480px; */
+  /* height: 480px; */
+  position: relative;
+  /* color: white;
+  background-color: aqua; */
+}
+.loader::before , .loader::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50% , -50%);
+  width: 90em;
+  height: 90em;
+  background-image:
+    radial-gradient(circle 10px, green 100%, transparent 0),
+    radial-gradient(circle 10px, green 100%, transparent 0),
+    radial-gradient(circle 10px,green 100%, transparent 0),
+    radial-gradient(circle 10px,green 100%, transparent 0),
+    radial-gradient(circle 10px,green 100%, transparent 0),
+    radial-gradient(circle 10px,green 100%, transparent 0),
+    radial-gradient(circle 10px,green 100%, transparent 0),
+    radial-gradient(circle 10px,green 100%, transparent 0);
+  background-position: 0em -18em, 0em 18em, 18em 0em, -18em 0em,
+                       13em -13em, -13em -13em, 13em 13em, -13em 13em;
+    background-repeat: no-repeat;
+  font-size: 0.5px;
+  border-radius: 50%;
+  animation: blast 1s ease-in infinite;
+}
+.loader::after {
+  font-size: 50000px;
+  background: hsl(120, 100%, 25% , 0.5);
+  animation: bounce 1s ease-in infinite;
+}
+
+@keyframes bounce {
+  0% , 100%{ font-size: 0.75px }
+  50% { font-size: 1.5px }
+}
+@keyframes blast {
+  0% , 40% {
+    font-size: 0.5px;
+  }
+  70% {
+    opacity: 1;
+    font-size: 4px;
+  }
+   100% {
+     font-size: 6px;
+    opacity: 0;
+  }
+}

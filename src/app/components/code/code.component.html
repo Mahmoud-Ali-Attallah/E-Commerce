@@ -1,0 +1,24 @@
+<h1>Write Code</h1>
+<div class="form" [formGroup]="form">
+  <input type="text" class="form-control" formControlName="code">
+  <div class="Error">
+    <p *ngIf="form.get('code')?.getError('required') &&form.get('code')?.touched ">Email Is Required</p>
+    <!-- <p *ngIf="form.get('code')?.getError('email') &&form.get('email')?.touched ">Email is Invalied</p> -->
+  </div>
+  <button class="btn btn-outline-success" (click)="forget()" [disabled]="form.invalid">
+    <span *ngIf="!isvalid">verify</span>
+    <span *ngIf="valid"><i class="fas fa-spin fa-spinner"></i></span>
+  </button>
+</div>
+<div class="errorr d-flex flex-column justify-content-center align-items-center">
+  <div class="err d-flex flex-column justify-content-center align-items-center" *ngIf="massage" >
+    <i (click)="close()" class="ico fa-regular fa-circle-xmark fs-2 bg-white rounded-circle"></i>
+    <div class=" prag rounded rounded-4 massageErroe d-flex flex-column justify-content-center align-items-center mt-2">
+      <p >{{massage}}</p>
+      <button class="btn btn-outline-success" (click)="RESET()">
+        <span *ngIf="!isvalid1"> ReSend Code</span>
+    <span *ngIf="valid2"><i class="fas fa-spin fa-spinner"></i></span>
+       </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>Write Code</h1>
+<div class="form"  [formGroup]="form">
+
+  <label class="mb-2" for="name">name</label>
+  <input class="form-control mb-3" id="password" type="text" formControlName="name" >
+  <div  *ngIf="form.get('name')?.errors && form.get('password')?.touched ">
+    <!-- <p *ngIf="form.get('newpassword')?.getError('pattern')">newpassword 010-011-012-015 (0-9)</p> -->
+    <p *ngIf="form.get('name')?.getError('required')">password is Required</p>
+  </div>
+
+
+
+  <label class="mb-2" for="email"> email</label>
+  <input class="form-control mb-3" id="email" type="email" formControlName="email">
+  <div  *ngIf="form.get('email')?.errors && form.get('email')?.touched ">
+    <p *ngIf="form.get('email')?.getError('pattern')">newpassword 010-011-012-015 (0-9)</p>
+    <p *ngIf="form.get('email')?.getError('required')">password is Required</p>
+  </div>
+
+
+  <label class="mb-2" for="phone">phone</label>
+  <input class="form-control mb-3" id="phone" type="tel" formControlName="phone">
+  <div  *ngIf="form.get('rePassword')?.errors && form.get('rePassword')?.touched ">
+    <p *ngIf="form.get('phone')?.getError('required')">Repassword is Required</p>
+    <p *ngIf="form.get('phone')?.getError('pattern')">Repassword is mistake</p>
+  </div>
+  <button class="btn btn-outline-success" (click)="update()" [disabled]="form.invalid">
+    <span *ngIf="!isvalid">verify</span>
+    <span *ngIf="valid"><i class="fas fa-spin fa-spinner"></i></span>
+  </button>
+</div>
+<div class="errorr d-flex flex-column justify-content-center align-items-center">
+  <div class="err d-flex flex-column justify-content-center align-items-center" *ngIf="massage" >
+    <i (click)="close()" class="ico fa-regular fa-circle-xmark fs-2 bg-white rounded-circle"></i>
+    <div class=" prag rounded rounded-4 massageErroe d-flex flex-column justify-content-center align-items-center mt-2">
+      <p >{{massage}}</p>
+      <!-- <button class="btn btn-outline-success" (click)="RESET()">
+        <span *ngIf="!isvalid1"> ReSend Code</span>
+    <span *ngIf="valid2"><i class="fas fa-spin fa-spinner"></i></span>
+       </button> -->
+    </div>
+  </div>
+</div>
+
+</div>
